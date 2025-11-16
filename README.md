@@ -36,7 +36,7 @@ project.
 
 ## License
 
-[MIT](./LICENSE) License © [Lumirelle](https://github.com/Lumirelle)
+[MIT](./LICENSE.md) License © [Lumirelle](https://github.com/Lumirelle)
 
 <!-- Badges -->
 
