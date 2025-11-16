@@ -41,4 +41,4 @@ project.
 <!-- Badges -->
 
 [license-src]: https://img.shields.io/github/license/lumirelle/demo-verify-deps-before-run.svg?style=flat&colorA=18181B&colorB=F0DB4F
-[license-href]: https://github.com/lumirelle/demo-verify-deps-before-run/blob/main/LICENSE
+[license-href]: https://github.com/lumirelle/demo-verify-deps-before-run/blob/main/LICENSE.md
