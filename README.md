@@ -2,7 +2,7 @@
 
 [![License][license-src]][license-href]
 
-A demo of script to port PNPM's verify deps before run to NPM & Yarn.
+A demo of script to port PNPM's verify deps before run to NPM & Yarn with zero-dependency.
 
 ## Background
 
