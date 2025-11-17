@@ -9,7 +9,9 @@
   "main": "index.js",
   "scripts": {
     "predev": "tsx scripts/verify-deps-before-run.ts",
-    "dev": "echo 1"
+    "dev": "echo 1",
+    "pretest": "node scripts/verify-deps-before-run.js",
+    "test": "echo 1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",

@@ -2,7 +2,13 @@
 
 [![License][license-src]][license-href]
 
-A demo of script to port PNPM's verify deps before run to NPM & Yarn with zero-dependency.
+A demo of scripts to port PNPM's verify deps before run to NPM & Yarn with zero-dependency.
+
+> [!Note]
+>
+> TS version need `tsx` to run.
+>
+> If you prefer zero-dependency, please use the JS version.
 
 ## Background
 
