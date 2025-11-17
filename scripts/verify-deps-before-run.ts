@@ -1,10 +1,9 @@
-import type { Nullable } from '@antfu/utils'
+import { spawn } from 'node:child_process'
 import process from 'node:process'
-import { x } from 'tinyexec'
 
 type PackageManager = 'npm' | 'yarn' | 'pnpm'
 
-function detectPackageManager(): Nullable<PackageManager & {}> {
+function detectPackageManager(): PackageManager & {} | null | undefined {
   const userAgent = process.env.npm_config_user_agent || ''
   const execPath = process.env.npm_execpath || ''
   if (userAgent.includes('pnpm') || execPath.includes('pnpm'))
@@ -14,6 +13,37 @@ function detectPackageManager(): Nullable<PackageManager & {}> {
   if (userAgent.includes('npm') || execPath.includes('npm'))
     return 'npm'
   return null
+}
+
+function execCommand(
+  command: string,
+  args: string[],
+  options?: { stdio?: 'inherit' },
+): Promise<{ stdout: string, stderr: string }> {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, {
+      stdio: options?.stdio || 'pipe',
+      shell: true,
+    })
+    let stdout = ''
+    let stderr = ''
+    if (child.stdout) {
+      child.stdout.on('data', (data) => {
+        stdout += data.toString()
+      })
+    }
+    if (child.stderr) {
+      child.stderr.on('data', (data) => {
+        stderr += data.toString()
+      })
+    }
+    child.on('close', () => {
+      resolve({ stdout, stderr })
+    })
+    child.on('error', (error) => {
+      reject(error)
+    })
+  })
 }
 
 async function verifyDependencies(): Promise<boolean> {
@@ -27,7 +57,7 @@ async function verifyDependencies(): Promise<boolean> {
       installCmd = ['yarn', ['check', '--integrity', '--ignore-scripts']]
       break
   }
-  const result = await x(installCmd[0], installCmd[1])
+  const result = await execCommand(installCmd[0], installCmd[1])
   if (result.stderr.includes('npm error missing:') || result.stderr.includes('npm error invalid:')) {
     console.warn('⚠️ Dependencies version invalid. Trigger `npm install`.')
     return false
@@ -50,7 +80,7 @@ async function installDependencies(): Promise<void> {
       installCmd = ['yarn', ['install', '--ignore-scripts']]
       break
   }
-  await x(installCmd[0], installCmd[1], { nodeOptions: { stdio: 'inherit' } })
+  await execCommand(installCmd[0], installCmd[1], { stdio: 'inherit' })
 }
 
 async function main() {
