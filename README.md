@@ -1,6 +1,7 @@
 # Demo -- Verify Deps Before Run
 
 [![License][license-src]][license-href]
+[![CodSpeed Badge](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://codspeed.io/lumirelle/demo-verify-deps-before-run?utm_source=badge)
 
 A demo of scripts to port PNPM's verify deps before run to NPM & Yarn with zero-dependency.
 
