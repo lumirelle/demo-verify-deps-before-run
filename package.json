@@ -11,18 +11,20 @@
     "predev": "tsx scripts/verify-deps-before-run.ts",
     "dev": "echo 1",
     "pretest": "node scripts/verify-deps-before-run.js",
-    "test": "echo 1"
+    "test": "echo 1",
+    "bench": "vitest bench --run"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
     "@antfu/utils": "^9.3.0",
+    "@codspeed/vitest-plugin": "^5.0.1",
     "@types/node": "^24.10.1",
-    "@vitest/ui": "^4.0.9",
+    "@vitest/ui": "^3.2.4",
     "eslint": "^9.39.1",
     "eslint-plugin-format": "^1.0.2",
     "tinyexec": "^1.0.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.9"
+    "vitest": "^3.2.4"
   }
 }
