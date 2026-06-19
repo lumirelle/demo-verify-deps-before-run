@@ -6,6 +6,12 @@ A demo of scripts to port PNPM's verify deps before run to NPM & Yarn with zero-
 
 > [!Note]
 >
+> Now I have switch to [aube](https://aube.jdx.dev) &ndash; Yet another fast & disk-saving & security Node.js package manager.
+>
+> From it's slogan: "Never forget to install", you can imagine, it will automatically install dependencies for us, before each time we running commands via it.
+
+> [!Note]
+>
 > TS version need `tsx` to run.
 >
 > If you prefer zero-dependency, please use the JS version.
